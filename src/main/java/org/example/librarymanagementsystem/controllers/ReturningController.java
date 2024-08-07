@@ -3,12 +3,12 @@ import org.example.librarymanagementsystem.services.BorrowReturnFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 @RestController
-@RequestMapping("/borrow")
-public class BorrowingController {
+@RequestMapping("/return")
+public class ReturningController {
     @Autowired
     private BorrowReturnFacade borrowReturnFacade;
     @PostMapping("/{bookId}/patron/{patronId}")
-    public void borrowBook(@PathVariable int bookId, @PathVariable int patronId) {
-        borrowReturnFacade.borrowBook(bookId, patronId);
+    public void returnBook(@PathVariable int bookId, @PathVariable int patronId) {
+        borrowReturnFacade.returnBook(bookId, patronId);
     }
 }

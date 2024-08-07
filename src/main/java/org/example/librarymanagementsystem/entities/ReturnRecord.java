@@ -1,8 +1,8 @@
 package org.example.librarymanagementsystem.entities;
 import jakarta.persistence.*;
+
 import java.util.Date;
-@Entity
-public class BorrowRecord{
+public class ReturnRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
@@ -14,13 +14,13 @@ public class BorrowRecord{
     private Patron patron;
     private Date borrowDate;
     private Date returnDate;
-    public BorrowRecord(Book book, Patron patron, Date borrowDate, Date returnDate) {
+    public ReturnRecord(Book book, Patron patron, Date borrowDate, Date returnDate) {
         this.book = book;
         this.patron = patron;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
     }
-    public BorrowRecord() {
+    public ReturnRecord() {
     }
     public int getID() {
         return ID;
