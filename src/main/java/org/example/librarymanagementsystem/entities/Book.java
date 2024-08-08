@@ -10,8 +10,7 @@ public class Book {
     private int publicationYear;
     private String ISBN;
     private String genre;
-    public Book(int ID, String title, String author, int publicationYear, String ISBN, String genre) {
-        this.ID = ID;
+    public Book(String title, String author, int publicationYear, String ISBN, String genre) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;

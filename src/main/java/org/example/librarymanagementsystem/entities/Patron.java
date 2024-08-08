@@ -10,8 +10,7 @@ public class Patron {
     private String address;
     private String email;
     private String phoneNumber;
-    public Patron(int ID, String name, int age, String address, String email, String phoneNumber) {
-        this.ID = ID;
+    public Patron(String name, int age, String address, String email, String phoneNumber) {
         this.name = name;
         this.age = age;
         this.address = address;

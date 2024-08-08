@@ -42,7 +42,7 @@ class FacadeTest {
         Patron patron = new Patron();
         when(bookService.getBookById(1)).thenReturn(book);
         when(patronService.getPatronById(1)).thenReturn(patron);
-        when(borrowingRecordRepository.findByBookIdAndPatronId(1, 1)).thenReturn(Collections.emptyList());
+        when(borrowingRecordRepository.findByBookIDAndPatronID(1, 1)).thenReturn(Collections.emptyList());
         borrowReturnFacade.borrowBook(1, 1);
         verify(borrowingRecordRepository, times(1)).save(any(BorrowRecord.class));
     }
@@ -65,7 +65,7 @@ class FacadeTest {
         BorrowRecord borrowRecord = new BorrowRecord(book, patron, new Date(), null);
         when(bookService.getBookById(1)).thenReturn(book);
         when(patronService.getPatronById(1)).thenReturn(patron);
-        when(borrowingRecordRepository.findByBookIdAndPatronId(1, 1)).thenReturn(List.of(borrowRecord));
+        when(borrowingRecordRepository.findByBookIDAndPatronID(1, 1)).thenReturn(List.of(borrowRecord));
         assertThrows(BorrowInvalidException.class, () -> borrowReturnFacade.borrowBook(1, 1));
     }
     @Test
@@ -75,7 +75,7 @@ class FacadeTest {
         BorrowRecord borrowRecord = new BorrowRecord(book, patron, new Date(), null);
         when(bookService.getBookById(1)).thenReturn(book);
         when(patronService.getPatronById(1)).thenReturn(patron);
-        when(borrowingRecordRepository.findByBookIdAndPatronId(1, 1)).thenReturn(List.of(borrowRecord));
+        when(borrowingRecordRepository.findByBookIDAndPatronID(1, 1)).thenReturn(List.of(borrowRecord));
         borrowReturnFacade.returnBook(1, 1);
         verify(borrowingRecordRepository, times(1)).deleteById(borrowRecord.getID());
         verify(returnRecordRepository, times(1)).save(any(ReturnRecord.class));
@@ -98,7 +98,7 @@ class FacadeTest {
         Patron patron = new Patron();
         when(bookService.getBookById(1)).thenReturn(book);
         when(patronService.getPatronById(1)).thenReturn(patron);
-        when(borrowingRecordRepository.findByBookIdAndPatronId(1, 1)).thenReturn(Collections.emptyList());
+        when(borrowingRecordRepository.findByBookIDAndPatronID(1, 1)).thenReturn(Collections.emptyList());
         assertThrows(BorrowInvalidException.class, () -> borrowReturnFacade.returnBook(1, 1));
     }
 }

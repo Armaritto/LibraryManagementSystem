@@ -32,7 +32,7 @@ public class BorrowReturnFacade {
         Book book = bookService.getBookById(bookId);
         Patron patron = patronService.getPatronById(patronId);
         checkBookAndPatron(book, patron);
-        List<BorrowRecord> list = borrowingRecordRepository.findByBookIdAndPatronId(bookId, patronId);
+        List<BorrowRecord> list = borrowingRecordRepository.findByBookIDAndPatronID(bookId, patronId);
         if (!list.isEmpty() && list.get(list.size() - 1).getReturnDate() == null) {
             throw new BorrowInvalidException("Book is already borrowed by the patron");
         }
@@ -43,7 +43,7 @@ public class BorrowReturnFacade {
         Book book = bookService.getBookById(bookId);
         Patron patron = patronService.getPatronById(patronId);
         checkBookAndPatron(book, patron);
-        List<BorrowRecord> list = borrowingRecordRepository.findByBookIdAndPatronId(bookId, patronId);
+        List<BorrowRecord> list = borrowingRecordRepository.findByBookIDAndPatronID(bookId, patronId);
         if (list.isEmpty() || list.get(list.size() - 1).getReturnDate() != null) {
             throw new BorrowInvalidException("Book is not borrowed by the patron");
         }

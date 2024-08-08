@@ -26,21 +26,21 @@ class BookControllerTest {
     }
     @Test
     void getAllBooksReturnsListOfBooks() {
-        List<Book> books = List.of(new Book(1, "Title1", "Author1", 2020, "ISBN1", "Genre1"));
+        List<Book> books = List.of(new Book("Title1", "Author1", 2020, "ISBN1", "Genre1"));
         when(bookService.getAllBooks()).thenReturn(books);
         List<Book> result = bookController.getAllBooks();
         assertEquals(books, result);
     }
     @Test
     void getBookByIdReturnsBook() {
-        Book book = new Book(1, "Title1", "Author1", 2020, "ISBN1", "Genre1");
+        Book book = new Book("Title1", "Author1", 2020, "ISBN1", "Genre1");
         when(bookService.getBookById(1)).thenReturn(book);
         Book result = bookController.getBookById(1);
         assertEquals(book, result);
     }
     @Test
     void addBookReturnsAddedBook() {
-        Book book = new Book(1, "Title1", "Author1", 2020, "ISBN1", "Genre1");
+        Book book = new Book("Title1", "Author1", 2020, "ISBN1", "Genre1");
         when(bookService.addBook(any(Book.class))).thenReturn(book);
         Map<String, Object> payload = new HashMap<>();
         payload.put("ID", 1);
@@ -54,7 +54,7 @@ class BookControllerTest {
     }
     @Test
     void updateBookReturnsUpdatedBook() {
-        Book book = new Book(1, "Title1", "Author1", 2020, "ISBN1", "Genre1");
+        Book book = new Book("Title1", "Author1", 2020, "ISBN1", "Genre1");
         when(bookService.updateBook(eq(1), any(Book.class))).thenReturn(book);
         Book result = bookController.updateBook(1, book);
         assertEquals(book, result);

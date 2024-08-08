@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface BorrowingRecordRepository extends JpaRepository<BorrowRecord, Integer> {
-    List<BorrowRecord> findByBookIdAndPatronId(int bookId, int patronId);
+    List<BorrowRecord> findByBookIDAndPatronID(int bookId, int patronId);
 }

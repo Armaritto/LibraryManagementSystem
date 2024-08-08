@@ -29,7 +29,7 @@ public class BookController {
     }
     @PostMapping
     public Book addBook(@RequestBody Map<String, Object> payload) {
-        Book book = new Book((int) payload.get("ID"), (String) payload.get("title"), (String) payload.get("author"), (int) payload.get("publicationYear"), (String) payload.get("ISBN"), (String) payload.get("genre"));
+        Book book = new Book((String) payload.get("title"), (String) payload.get("author"), (int) payload.get("publicationYear"), (String) payload.get("ISBN"), (String) payload.get("genre"));
         return bookService.addBook(book);
     }
     @PutMapping("/{id}")
@@ -37,8 +37,9 @@ public class BookController {
         return bookService.updateBook(id, book);
     }
     @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable int id) {
+    public ResponseEntity<String> deleteBook(@PathVariable int id) {
         bookService.deleteBook(id);
+        return new ResponseEntity<>("Book deleted successfully", HttpStatus.OK);
     }
     @ExceptionHandler(BookNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleBookNotFoundException(BookNotFoundException ex, WebRequest request) {

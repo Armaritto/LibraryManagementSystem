@@ -10,7 +10,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.*;
 @RestController
-@RequestMapping("/patrons")
+@RequestMapping("/api/patrons")
 public class PatronController {
     @Autowired
     private PatronService patronService;
@@ -37,8 +37,9 @@ public class PatronController {
         return patronService.updatePatron(id, patron);
     }
     @DeleteMapping("/{id}")
-    public void deletePatron(@PathVariable int id) {
+    public ResponseEntity<String> deletePatron(@PathVariable int id) {
         patronService.deletePatron(id);
+        return new ResponseEntity<>("Patron deleted successfully", HttpStatus.OK);
     }
     @ExceptionHandler(InvalidPatronException.class)
     public ResponseEntity<Map<String, String>> handleInvalidPatronException(InvalidPatronException ex, WebRequest request) {

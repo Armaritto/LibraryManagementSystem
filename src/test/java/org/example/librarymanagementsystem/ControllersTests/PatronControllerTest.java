@@ -27,21 +27,21 @@ class PatronControllerTest {
     }
     @Test
     void getAllPatronsReturnsListOfPatrons() {
-        List<Patron> patrons = List.of(new Patron(1, "John Doe", 30, "123 Main St", "john@example.com", "1234567890"));
+        List<Patron> patrons = List.of(new Patron( "John Doe", 30, "123 Main St", "john@example.com", "1234567890"));
         when(patronService.getAllPatrons()).thenReturn(patrons);
         List<Patron> result = patronController.getAllPatrons();
         assertEquals(patrons, result);
     }
     @Test
     void getPatronByIdReturnsPatron() {
-        Patron patron = new Patron(1, "John Doe", 30, "123 Main St", "john@example.com", "1234567890");
+        Patron patron = new Patron("John Doe", 30, "123 Main St", "john@example.com", "1234567890");
         when(patronService.getPatronById(1)).thenReturn(patron);
         Patron result = patronController.getPatronById(1);
         assertEquals(patron, result);
     }
     @Test
     void addPatronReturnsAddedPatron() {
-        Patron patron = new Patron(1, "John Doe", 30, "123 Main St", "john@example.com", "1234567890");
+        Patron patron = new Patron("John Doe", 30, "123 Main St", "john@example.com", "1234567890");
         when(patronService.addPatron(any(Patron.class))).thenReturn(patron);
         Map<String, Object> payload = new HashMap<>();
         payload.put("name", "John Doe");
@@ -54,7 +54,7 @@ class PatronControllerTest {
     }
     @Test
     void updatePatronReturnsUpdatedPatron() {
-        Patron patron = new Patron(1, "John Doe", 30, "123 Main St", "john@example.com", "1234567890");
+        Patron patron = new Patron( "John Doe", 30, "123 Main St", "john@example.com", "1234567890");
         when(patronService.updatePatron(eq(1), any(Patron.class))).thenReturn(patron);
         Patron result = patronController.updatePatron(1, patron);
         assertEquals(patron, result);

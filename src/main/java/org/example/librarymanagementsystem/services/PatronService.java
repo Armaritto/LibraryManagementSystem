@@ -2,10 +2,12 @@ package org.example.librarymanagementsystem.services;
 import org.example.librarymanagementsystem.entities.Patron;
 import org.example.librarymanagementsystem.exceptions.PatronNotFoundException;
 import org.example.librarymanagementsystem.repositories.PatronRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class PatronService {
+    @Autowired
     private PatronRepository patronRepository;
     public List<Patron> getAllPatrons() {
         return patronRepository.findAll();
