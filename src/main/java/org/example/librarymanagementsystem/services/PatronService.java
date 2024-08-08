@@ -1,9 +1,8 @@
 package org.example.librarymanagementsystem.services;
-
 import org.example.librarymanagementsystem.entities.Patron;
+import org.example.librarymanagementsystem.exceptions.PatronNotFoundException;
 import org.example.librarymanagementsystem.repositories.PatronRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 @Service
 public class PatronService {
@@ -18,7 +17,7 @@ public class PatronService {
         return patronRepository.save(patron);
     }
     public Patron updatePatron(int id, Patron newPatron) {
-        Patron patron = patronRepository.findById(id).orElse(null);
+        Patron patron = patronRepository.findById(id).orElseThrow(() -> new PatronNotFoundException("Patron not found with ID: " + id));
         patron.setAge(newPatron.getAge());
         patron.setName(newPatron.getName());
         patron.setPhoneNumber(newPatron.getPhoneNumber());
