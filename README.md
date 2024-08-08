@@ -118,7 +118,7 @@ http://localhost:8080/api/
 
 ### Borrowings
 - **GET** `/borrow/{bookId}/patron/{patronId}`
-    - Response: JSON Object of the borrowing record
+    - Response: Status 200 OK
 
 ### Returning
 - **POST** `/return/{bookId}/patron/{patronId}`
